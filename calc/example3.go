@@ -11,18 +11,6 @@ import (
 
 func main() {
 	fmt.Println("1 + 2 * 3 =", calc("1 + 2 * 3"))
-	// // Setup the input
-	// is := antlr.NewInputStream("1 + 2 * 3")
-
-	// // Create the Lexer
-	// lexer := parser.NewCalcLexer(is)
-	// stream := antlr.NewCommonTokenStream(lexer, antlr.TokenDefaultChannel)
-
-	// // Create the Parser
-	// p := parser.NewCalcParser(stream)
-
-	// // Finally parse the expression
-	// antlr.ParseTreeWalkerDefault.Walk(&calcListener{}, p.Start())
 }
 
 // calc takes a string expression and returns the evaluated result.
