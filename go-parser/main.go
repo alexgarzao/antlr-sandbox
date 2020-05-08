@@ -13,7 +13,7 @@ package main
 import "fmt"
 
 func main() {
-	fmt.Printlm("Hello")
+	fmt.Println("Hello")
 }
 `
 
