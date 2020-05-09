@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/alexgarzao/antlr-sandbox/go-parser/parser"
+	"github.com/alexgarzao/antlr-sandbox/go-parser-gen-same-input/parser"
 	"github.com/antlr/antlr4/runtime/Go/antlr"
 )
 
@@ -18,11 +18,11 @@ func main() {
 `
 
 func main() {
-	fmt.Println("1 + 2 * 3 =", calc(hello))
+	goParser(hello)
 }
 
 // calc takes a string expression and returns the evaluated result.
-func calc(input string) int {
+func goParser(input string) {
 	// Setup the input
 	is := antlr.NewInputStream(input)
 
@@ -36,8 +36,6 @@ func calc(input string) int {
 	// Finally parse the expression (by walking the tree)
 	var listener goListener
 	antlr.ParseTreeWalkerDefault.Walk(&listener, p.SourceFile())
-
-	return 1
 }
 
 type goListener struct {
@@ -45,11 +43,11 @@ type goListener struct {
 }
 
 func (l *goListener) VisitTerminal(node antlr.TerminalNode) {
-	// fmt.Println("#### ", node.GetText())
-	fmt.Print(node.GetText(), " ")
+	if node.GetText() != "<EOF>" {
+		fmt.Print(node.GetText(), " ")
+	}
 }
 
 func (l *goListener) EnterEos(ctx *parser.EosContext) {
-	// fmt.Println("//// ", ctx.GetText())
 	fmt.Println()
 }

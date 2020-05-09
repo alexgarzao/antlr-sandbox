@@ -146,8 +146,8 @@ INTERPRETED_STRING_LIT : '"' (~["\\] | ESCAPED_VALUE)*  '"';
 
 WS                     : [ \t]+             -> channel(HIDDEN);
 COMMENT                : '/*' .*? '*/'      -> channel(HIDDEN);
-TERMINATOR             : [\r\n]+;
-// TERMINATOR             : [\r\n]+            -> channel(HIDDEN);
+// TERMINATOR             : [\r\n]+;
+TERMINATOR             : [\r\n]+            -> channel(HIDDEN);
 LINE_COMMENT           : '//' ~[\r\n]*      -> channel(HIDDEN);
 
 // Fragments
