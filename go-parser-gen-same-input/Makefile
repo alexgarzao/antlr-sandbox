@@ -4,4 +4,4 @@ gen-grammar:
 	$(ANTLR) -Dlanguage=Go -o parser GoLexer.g4 GoParser.g4
 
 run:
-	go run main.go
+	@go run main.go
